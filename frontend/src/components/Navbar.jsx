@@ -1,52 +1,33 @@
 import { useState, useEffect } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import './Navbar.css';
+
+const navItems = [
+  { path: '/', label: 'Home', end: true },
+  { path: '/education', label: 'Education' },
+  { path: '/experience', label: 'Experience' },
+  { path: '/research', label: 'Research' },
+  { path: '/skills', label: 'Skills' },
+  { path: '/projects', label: 'Projects' },
+  { path: '/achievements', label: 'Achievements' },
+  { path: '/publications', label: 'Publications' },
+];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
-
-  const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'certifications', label: 'Certifications' },
-    { id: 'publications', label: 'Publications' },
-    { id: 'contact', label: 'Contact' },
-  ];
+  const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-
-      // Update active section based on scroll position
-      const sections = navItems.map(item => document.getElementById(item.id));
-      const scrollPosition = window.scrollY + 100;
-
-      sections.forEach((section, index) => {
-        if (section) {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.offsetHeight;
-          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            setActiveSection(navItems[index].id);
-          }
-        }
-      });
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  useEffect(() => {
     setMenuOpen(false);
-  };
+  }, [location.pathname]);
 
   return (
     <motion.nav
@@ -56,41 +37,39 @@ const Navbar = () => {
       transition={{ duration: 0.5 }}
     >
       <div className="nav-container">
-        <motion.div 
-          className="logo"
-          whileHover={{ scale: 1.05 }}
-          onClick={() => scrollToSection('home')}
-        >
-          <span className="logo-text">SMS</span>
-          <span className="logo-dot">.</span>
-        </motion.div>
+        <Link to="/" className="logo">
+          <motion.span whileHover={{ scale: 1.05 }} className="logo-inner">
+            <span className="logo-text">SMS</span>
+            <span className="logo-dot">.</span>
+          </motion.span>
+        </Link>
 
         <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
           {navItems.map((item, index) => (
-            <motion.a
-              key={item.id}
-              className={`nav-link ${activeSection === item.id ? 'active' : ''}`}
-              onClick={() => scrollToSection(item.id)}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
-              whileHover={{ y: -2 }}
+            <NavLink
+              key={item.path}
+              to={item.path}
+              end={item.end}
+              className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
             >
-              {item.label}
-              {activeSection === item.id && (
-                <motion.span
-                  className="nav-indicator"
-                  layoutId="navIndicator"
-                  transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                />
-              )}
-            </motion.a>
+              <motion.span
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+                whileHover={{ y: -2 }}
+                className="nav-link-inner"
+              >
+                {item.label}
+              </motion.span>
+            </NavLink>
           ))}
         </div>
 
-        <button 
+        <button
+          type="button"
           className={`menu-toggle ${menuOpen ? 'open' : ''}`}
           onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
         >
           <span></span>
           <span></span>
@@ -98,7 +77,6 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -109,16 +87,20 @@ const Navbar = () => {
             transition={{ duration: 0.3 }}
           >
             {navItems.map((item, index) => (
-              <motion.a
-                key={item.id}
-                className={`mobile-link ${activeSection === item.id ? 'active' : ''}`}
-                onClick={() => scrollToSection(item.id)}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.05 }}
+              <NavLink
+                key={item.path}
+                to={item.path}
+                end={item.end}
+                className={({ isActive }) => `mobile-link ${isActive ? 'active' : ''}`}
               >
-                {item.label}
-              </motion.a>
+                <motion.span
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.05 }}
+                >
+                  {item.label}
+                </motion.span>
+              </NavLink>
             ))}
           </motion.div>
         )}
@@ -128,4 +110,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import './About.css';
 
 const About = () => {
@@ -8,10 +9,16 @@ const About = () => {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   const stats = [
-    { number: '3+', label: 'Years Experience' },
-    { number: '20+', label: 'Projects Completed' },
-    { number: '10+', label: 'Happy Clients' },
-    { number: '5+', label: 'Certifications' },
+    { number: '15+', label: 'GitHub Projects' },
+    { number: '1+', label: 'Years Experience' },
+    { number: '1', label: 'Conference Publication' },
+    { number: '7+', label: 'Competition Awards' },
+  ];
+
+  const quickLinks = [
+    { to: '/education', icon: '🎓', title: 'Education', desc: 'BUET · Notre Dame · Ideal School' },
+    { to: '/experience', icon: '💼', title: 'Experience', desc: 'Synesis IT · AI & R&D' },
+    { to: '/research', icon: '🔬', title: 'Research', desc: 'UIUC++ SRSE · Thesis' },
   ];
 
   return (
@@ -42,10 +49,10 @@ const About = () => {
                 </div>
               </div>
               <div className="floating-badge badge-1">
-                <span>🚀</span>
+                <span>🤖</span>
               </div>
               <div className="floating-badge badge-2">
-                <span>💡</span>
+                <span>📚</span>
               </div>
             </div>
           </motion.div>
@@ -57,59 +64,42 @@ const About = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <div className="about-cards">
-              <motion.div 
-                className="about-card"
-                whileHover={{ y: -5, scale: 1.02 }}
-                transition={{ duration: 0.2 }}
-              >
-                <span className="card-icon">🎯</span>
-                <h3>Experience</h3>
-                <p>3+ Years Working</p>
-              </motion.div>
-
-              <motion.div 
-                className="about-card"
-                whileHover={{ y: -5, scale: 1.02 }}
-                transition={{ duration: 0.2 }}
-              >
-                <span className="card-icon">👥</span>
-                <h3>Clients</h3>
-                <p>10+ Worldwide</p>
-              </motion.div>
-
-              <motion.div 
-                className="about-card"
-                whileHover={{ y: -5, scale: 1.02 }}
-                transition={{ duration: 0.2 }}
-              >
-                <span className="card-icon">📁</span>
-                <h3>Projects</h3>
-                <p>20+ Completed</p>
-              </motion.div>
+              {quickLinks.map((item) => (
+                <motion.div key={item.to} whileHover={{ y: -5, scale: 1.02 }} transition={{ duration: 0.2 }}>
+                  <Link to={item.to} className="about-card about-card-link">
+                    <span className="card-icon">{item.icon}</span>
+                    <h3>{item.title}</h3>
+                    <p>{item.desc}</p>
+                  </Link>
+                </motion.div>
+              ))}
             </div>
 
             <p className="about-description">
-              I'm a passionate Full Stack Developer with expertise in building 
-              modern web applications. I love turning complex problems into 
-              simple, beautiful, and intuitive solutions. My journey in tech 
-              has equipped me with a diverse skill set spanning frontend, 
-              backend, and everything in between.
+              I am a Computer Science and Engineering graduate from Bangladesh University
+              of Engineering and Technology with a strong passion for problem-solving,
+              algorithms, and mathematics. I am enthusiastic about machine learning,
+              cybersecurity, and software development, with a keen interest in Data
+              Structures & Algorithms.
             </p>
 
             <p className="about-description">
-              When I'm not coding, you'll find me exploring new technologies, 
-              contributing to open source, or sharing knowledge through 
-              technical writing and publications.
+              Currently, I work as a Software Engineer on the AI and R&D team at Synesis IT,
+              building multilingual RAG chatbots with FastAPI, Hugging Face Transformers,
+              and FAISS. I am also contributing to LLM research through the UIUC++
+              Summer Research program and published work on Bangla fake news detection.
             </p>
 
-            <motion.button
+            <motion.a
+              href={`${import.meta.env.BASE_URL}resume.pdf`}
               className="about-cta"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
             >
-              Let's Talk
-            </motion.button>
+              Download Resume
+            </motion.a>
           </motion.div>
         </div>
 
@@ -121,7 +111,7 @@ const About = () => {
         >
           {stats.map((stat, index) => (
             <motion.div
-              key={index}
+              key={stat.label}
               className="stat-item"
               initial={{ scale: 0 }}
               animate={isInView ? { scale: 1 } : {}}
@@ -138,4 +128,3 @@ const About = () => {
 };
 
 export default About;
-

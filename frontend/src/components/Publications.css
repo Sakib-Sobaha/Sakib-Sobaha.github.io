@@ -1,6 +1,6 @@
 .publications-section {
   min-height: 100vh;
-  padding: 6rem 2rem;
+  padding: 7rem 2rem 4rem;
   position: relative;
 }
 
@@ -102,6 +102,12 @@
   color: #64c8ff;
   font-size: 0.9rem;
   font-weight: 500;
+}
+
+.pub-authors {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .pub-abstract {

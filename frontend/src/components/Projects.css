@@ -1,6 +1,6 @@
 .projects-section {
   min-height: 100vh;
-  padding: 6rem 2rem;
+  padding: 7rem 2rem 4rem;
   position: relative;
 }
 
@@ -68,6 +68,19 @@
   overflow: hidden;
 }
 
+.project-group-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.3rem 0.75rem;
+  background: rgba(99, 102, 241, 0.85);
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 0.3px;
+}
+
 .project-emoji {
   font-size: 5rem;
   transition: all 0.3s ease;
@@ -114,6 +127,32 @@
 .project-link:hover {
   background: #64c8ff;
   border-color: #64c8ff;
+}
+
+.project-link-video:hover {
+  background: #ef4444;
+  border-color: #ef4444;
+}
+
+.project-video-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+  padding: 0.45rem 0.9rem;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  border-radius: 999px;
+  color: #fca5a5;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.project-video-chip:hover {
+  background: rgba(239, 68, 68, 0.22);
+  color: #ffffff;
 }
 
 .project-content {

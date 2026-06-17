@@ -89,3 +89,7 @@ frontend/dist/
 .yarn/install-state.gz
 .pnp.*
 
+# files
+
+project_video.txt
+resume.pdf

@@ -1,6 +1,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { isSupabaseConfigured, supabase } from '../lib/supabase';
+import { contact } from '../data/portfolio';
 import './Contact.css';
 
 const Contact = () => {
@@ -59,26 +60,26 @@ const Contact = () => {
     {
       icon: '📧',
       title: 'Email',
-      value: 'sakib@example.com',
-      link: 'mailto:sakib@example.com',
+      value: contact.email,
+      link: `mailto:${contact.email}`,
     },
     {
-      icon: '📍',
-      title: 'Location',
-      value: 'Dhaka, Bangladesh',
-      link: '#',
+      icon: '📱',
+      title: 'Phone',
+      value: contact.phone,
+      link: `tel:${contact.phone.replace(/\s/g, '')}`,
     },
     {
       icon: '💼',
       title: 'LinkedIn',
-      value: 'linkedin.com/in/sakib',
-      link: 'https://linkedin.com',
+      value: 'sakib-mohammed-sobaha',
+      link: contact.linkedin,
     },
     {
       icon: '🐙',
       title: 'GitHub',
-      value: 'github.com/sakib',
-      link: 'https://github.com',
+      value: 'Sakib-Sobaha',
+      link: contact.github,
     },
   ];
 
@@ -102,10 +103,11 @@ const Contact = () => {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h3>Let&apos;s work together!</h3>
+            <h3>Let&apos;s connect!</h3>
             <p>
-              I&apos;m always open to discussing new projects, creative ideas, 
-              or opportunities to be part of your vision. Feel free to reach out!
+              I&apos;m open to research collaborations, software engineering roles,
+              and conversations about AI, machine learning, and full-stack development.
+              Feel free to reach out.
             </p>
 
             <div className="contact-cards">
@@ -131,19 +133,18 @@ const Contact = () => {
             </div>
 
             <div className="social-links">
-              <motion.a 
-                href="https://twitter.com" 
-                target="_blank" 
+              <motion.a
+                href={contact.codeforces}
+                target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, y: -3 }}
+                title="Codeforces"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
+                <span className="social-text">CF</span>
               </motion.a>
-              <motion.a 
-                href="https://linkedin.com" 
-                target="_blank" 
+              <motion.a
+                href={contact.linkedin}
+                target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, y: -3 }}
               >
@@ -151,9 +152,9 @@ const Contact = () => {
                   <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                 </svg>
               </motion.a>
-              <motion.a 
-                href="https://github.com" 
-                target="_blank" 
+              <motion.a
+                href={contact.github}
+                target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, y: -3 }}
               >

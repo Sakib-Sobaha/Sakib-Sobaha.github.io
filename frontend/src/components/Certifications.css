@@ -1,6 +1,6 @@
 .certifications-section {
   min-height: 100vh;
-  padding: 6rem 2rem;
+  padding: 7rem 2rem 4rem;
   position: relative;
   background: linear-gradient(180deg, transparent, rgba(168, 85, 247, 0.03), transparent);
 }

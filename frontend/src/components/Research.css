@@ -1,0 +1,138 @@
+.research-section {
+  min-height: 100vh;
+  padding: 7rem 2rem 4rem;
+  background: linear-gradient(180deg, transparent, rgba(168, 85, 247, 0.03), transparent);
+}
+
+.research-list {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.research-card {
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  transition: all 0.3s ease;
+}
+
+.research-card:hover {
+  border-color: rgba(168, 85, 247, 0.3);
+  transform: translateY(-4px);
+}
+
+.research-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1.25rem;
+  align-items: start;
+  margin-bottom: 0.75rem;
+}
+
+.research-icon {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(100, 200, 255, 0.15));
+  border-radius: 14px;
+}
+
+.research-role {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.4;
+  margin-bottom: 0.35rem;
+}
+
+.research-org {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #a855f7;
+}
+
+.research-dates {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.2rem;
+  text-align: right;
+}
+
+.research-period {
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+}
+
+.research-duration {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.85rem;
+}
+
+.research-type {
+  margin-top: 0.35rem;
+  padding: 0.2rem 0.65rem;
+  background: rgba(100, 200, 255, 0.1);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64c8ff;
+}
+
+.research-location {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.9rem;
+  margin-bottom: 1.25rem;
+  padding-left: calc(52px + 1.25rem);
+}
+
+.research-highlights {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding-left: calc(52px + 1.25rem);
+}
+
+.research-highlights li {
+  position: relative;
+  padding-left: 1.2rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.research-highlights li::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: #a855f7;
+}
+
+@media (max-width: 768px) {
+  .research-header {
+    grid-template-columns: auto 1fr;
+  }
+
+  .research-dates {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: left;
+  }
+
+  .research-location,
+  .research-highlights {
+    padding-left: 0;
+  }
+}

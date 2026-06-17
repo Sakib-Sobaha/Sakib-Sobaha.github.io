@@ -1,6 +1,6 @@
 .skills-section {
   min-height: 100vh;
-  padding: 6rem 2rem;
+  padding: 7rem 2rem 4rem;
   position: relative;
   background: linear-gradient(180deg, transparent, rgba(100, 200, 255, 0.02), transparent);
 }
@@ -145,6 +145,17 @@
   cursor: pointer;
   filter: grayscale(0.3);
   transition: all 0.3s ease;
+}
+
+.tech-icon.tech-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.55rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  filter: none;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .tech-icon:hover {

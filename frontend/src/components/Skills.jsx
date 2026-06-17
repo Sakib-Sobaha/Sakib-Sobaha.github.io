@@ -8,49 +8,54 @@ const Skills = () => {
 
   const skillCategories = [
     {
-      title: 'Frontend',
-      icon: '🎨',
+      title: 'Languages',
+      icon: '💻',
       skills: [
-        { name: 'React.js', level: 90 },
+        { name: 'Python', level: 90 },
+        { name: 'Java', level: 88 },
         { name: 'JavaScript', level: 85 },
-        { name: 'TypeScript', level: 80 },
-        { name: 'HTML/CSS', level: 95 },
-        { name: 'Tailwind CSS', level: 85 },
+        { name: 'C/C++', level: 82 },
+        { name: 'SQL', level: 80 },
       ],
     },
     {
-      title: 'Backend',
+      title: 'Frameworks & Databases',
       icon: '⚙️',
       skills: [
-        { name: 'Node.js', level: 85 },
-        { name: 'Express.js', level: 80 },
-        { name: 'Python', level: 75 },
-        { name: 'REST APIs', level: 90 },
-        { name: 'GraphQL', level: 70 },
+        { name: 'React', level: 88 },
+        { name: 'Spring Boot', level: 85 },
+        { name: 'Node.js / Express', level: 85 },
+        { name: 'FastAPI', level: 82 },
+        { name: 'PostgreSQL / MongoDB', level: 80 },
       ],
     },
     {
-      title: 'Database',
-      icon: '🗄️',
+      title: 'ML & Deep Learning',
+      icon: '🧠',
       skills: [
-        { name: 'MongoDB', level: 85 },
-        { name: 'PostgreSQL', level: 80 },
-        { name: 'MySQL', level: 75 },
-        { name: 'Redis', level: 70 },
-        { name: 'Firebase', level: 80 },
+        { name: 'PyTorch', level: 85 },
+        { name: 'Hugging Face / Transformers', level: 82 },
+        { name: 'Scikit-learn', level: 80 },
+        { name: 'NumPy / Pandas', level: 88 },
+        { name: 'OpenCV', level: 75 },
       ],
     },
     {
-      title: 'Tools & Others',
+      title: 'Tools & Other',
       icon: '🛠️',
       skills: [
-        { name: 'Git/GitHub', level: 90 },
-        { name: 'Docker', level: 75 },
-        { name: 'AWS', level: 70 },
-        { name: 'Linux', level: 80 },
-        { name: 'Figma', level: 65 },
+        { name: 'Git & GitHub', level: 90 },
+        { name: 'Linux / Bash', level: 85 },
+        { name: 'VS Code / Postman', level: 88 },
+        { name: 'Google Colab / Kaggle', level: 82 },
+        { name: 'LaTeX', level: 78 },
       ],
     },
+  ];
+
+  const techStack = [
+    'React', 'Python', 'PyTorch', 'Spring Boot', 'Node.js',
+    'FastAPI', 'MongoDB', 'PostgreSQL', 'FAISS', 'TensorFlow',
   ];
 
   return (
@@ -108,7 +113,6 @@ const Skills = () => {
           ))}
         </div>
 
-        {/* Tech Stack Icons */}
         <motion.div
           className="tech-stack"
           initial={{ opacity: 0 }}
@@ -117,16 +121,16 @@ const Skills = () => {
         >
           <h3>Tech Stack</h3>
           <div className="tech-icons">
-            {['⚛️', '🟨', '🟦', '🟢', '🐍', '🐳', '☁️', '🔥', '🍃', '🐘'].map((icon, index) => (
+            {techStack.map((tech, index) => (
               <motion.span
-                key={index}
-                className="tech-icon"
-                whileHover={{ scale: 1.2, rotate: 10 }}
+                key={tech}
+                className="tech-icon tech-label"
+                whileHover={{ scale: 1.08 }}
                 initial={{ opacity: 0, scale: 0 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.3, delay: 0.6 + index * 0.05 }}
               >
-                {icon}
+                {tech}
               </motion.span>
             ))}
           </div>
@@ -137,4 +141,3 @@ const Skills = () => {
 };
 
 export default Skills;
-

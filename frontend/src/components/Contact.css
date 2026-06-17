@@ -101,6 +101,11 @@
   color: white;
 }
 
+.social-text {
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
 .contact-form {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.08);

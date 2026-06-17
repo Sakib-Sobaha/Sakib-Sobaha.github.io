@@ -1,32 +1,30 @@
-import SpiderWeb from './components/SpiderWeb'
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import About from './components/About'
-import Skills from './components/Skills'
-import Projects from './components/Projects'
-import Certifications from './components/Certifications'
-import Publications from './components/Publications'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
-import './App.css'
+import { Routes, Route } from 'react-router-dom';
+import MainLayout from './layouts/MainLayout';
+import HomePage from './pages/HomePage';
+import SkillsPage from './pages/SkillsPage';
+import ProjectsPage from './pages/ProjectsPage';
+import EducationPage from './pages/EducationPage';
+import ExperiencePage from './pages/ExperiencePage';
+import ResearchPage from './pages/ResearchPage';
+import AchievementsPage from './pages/AchievementsPage';
+import PublicationsPage from './pages/PublicationsPage';
+import './App.css';
 
 function App() {
   return (
-    <>
-      <SpiderWeb />
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Certifications />
-        <Publications />
-        <Contact />
-      </main>
-      <Footer />
-    </>
-  )
+    <Routes>
+      <Route element={<MainLayout />}>
+        <Route index element={<HomePage />} />
+        <Route path="skills" element={<SkillsPage />} />
+        <Route path="projects" element={<ProjectsPage />} />
+        <Route path="education" element={<EducationPage />} />
+        <Route path="experience" element={<ExperiencePage />} />
+        <Route path="research" element={<ResearchPage />} />
+        <Route path="achievements" element={<AchievementsPage />} />
+        <Route path="publications" element={<PublicationsPage />} />
+      </Route>
+    </Routes>
+  );
 }
 
-export default App
+export default App;

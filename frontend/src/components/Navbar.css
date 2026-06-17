@@ -27,6 +27,12 @@
   cursor: pointer;
   display: flex;
   align-items: center;
+  text-decoration: none;
+}
+
+.logo-inner {
+  display: flex;
+  align-items: center;
 }
 
 .logo-text {
