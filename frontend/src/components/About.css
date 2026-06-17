@@ -12,29 +12,6 @@
   width: 100%;
 }
 
-.section-header {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-
-.section-subtitle {
-  color: #64c8ff;
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-weight: 500;
-}
-
-.section-title {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-top: 0.5rem;
-  background: linear-gradient(135deg, #ffffff, #64c8ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
 .about-content {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
@@ -150,7 +127,7 @@
 
 .about-card h3 {
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   color: #ffffff;
   margin-bottom: 0.3rem;
 }
@@ -235,10 +212,6 @@
 }
 
 @media (max-width: 600px) {
-  .section-title {
-    font-size: 2rem;
-  }
-
   .about-cards {
     grid-template-columns: 1fr;
   }
