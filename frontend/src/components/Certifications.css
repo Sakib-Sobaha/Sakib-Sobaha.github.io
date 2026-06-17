@@ -10,6 +10,23 @@
   margin: 0 auto;
 }
 
+.achievement-group {
+  margin-bottom: 3.5rem;
+}
+
+.achievement-group:last-child {
+  margin-bottom: 0;
+}
+
+.achievement-group-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  padding-left: 1rem;
+  border-left: 3px solid #64c8ff;
+}
+
 .certifications-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
