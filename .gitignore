@@ -92,4 +92,5 @@ frontend/dist/
 # files
 
 project_video.txt
-resume.pdf
+/resume.pdf
+frontend/public/resume.pdf

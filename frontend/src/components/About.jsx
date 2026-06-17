@@ -90,6 +90,7 @@ const About = () => {
               Summer Research program and published work on Bangla fake news detection.
             </p>
 
+            {/* Download Resume — uncomment when frontend/public/resume.pdf is committed
             <motion.a
               href={`${import.meta.env.BASE_URL}resume.pdf`}
               className="about-cta"
@@ -100,6 +101,7 @@ const About = () => {
             >
               Download Resume
             </motion.a>
+            */}
           </motion.div>
         </div>
 

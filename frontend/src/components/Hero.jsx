@@ -77,6 +77,7 @@ const Hero = () => {
               </svg>
             </motion.span>
           </Link>
+          {/* Download Resume — uncomment when frontend/public/resume.pdf is committed
           <motion.a
             href={`${import.meta.env.BASE_URL}resume.pdf`}
             className="btn btn-secondary"
@@ -87,6 +88,7 @@ const Hero = () => {
           >
             <span>Download Resume</span>
           </motion.a>
+          */}
         </motion.div>
       </motion.div>
 

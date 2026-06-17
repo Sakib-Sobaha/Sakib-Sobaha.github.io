@@ -3,7 +3,7 @@ export const contact = {
   phone: '+880 1633-927378',
   linkedin: 'https://www.linkedin.com/in/sakib-mohammed-sobaha-975a841a0',
   github: 'https://github.com/Sakib-Sobaha',
-  codeforces: 'https://codeforces.com/profile/sakibmohammedsobaha',
+  codeforces: 'https://codeforces.com/profile/-0.25',
   location: 'Dhaka, Bangladesh',
 };
 
