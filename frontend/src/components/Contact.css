@@ -166,6 +166,12 @@
   width: calc(100% - 2rem);
 }
 
+.form-error {
+  margin: 0 0 1rem;
+  color: #f87171;
+  font-size: 0.9rem;
+}
+
 .submit-btn {
   width: 100%;
   display: flex;

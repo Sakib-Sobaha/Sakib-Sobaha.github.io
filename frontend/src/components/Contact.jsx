@@ -1,5 +1,6 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
+import { isSupabaseConfigured, supabase } from '../lib/supabase';
 import './Contact.css';
 
 const Contact = () => {
@@ -13,6 +14,7 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const handleChange = (e) => {
     setFormData({
@@ -24,15 +26,33 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setSubmitted(true);
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    
-    setTimeout(() => setSubmitted(false), 3000);
+    setSubmitError('');
+
+    try {
+      if (isSupabaseConfigured) {
+        const { error } = await supabase.from('contact_messages').insert([
+          {
+            name: formData.name,
+            email: formData.email,
+            subject: formData.subject,
+            message: formData.message,
+          },
+        ]);
+
+        if (error) throw error;
+      } else {
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+      }
+
+      setSubmitted(true);
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      setTimeout(() => setSubmitted(false), 3000);
+    } catch (error) {
+      console.error('Contact form submission failed:', error);
+      setSubmitError('Something went wrong. Please try again or email me directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -199,6 +219,7 @@ const Contact = () => {
               ></textarea>
               <span className="input-highlight"></span>
             </div>
+            {submitError && <p className="form-error">{submitError}</p>}
 
             <motion.button
               type="submit"
